@@ -5,9 +5,8 @@ import { connect } from 'react-redux'
 
 class ReviewsContainer extends Component {
 
-
-    render() {
-        console.log(this.props)
+	render() {
+			console.log('REVIEWS CONTAINER', this.props.movieID)
         return (
             <div>
                 <ReviewInput 
@@ -16,8 +15,7 @@ class ReviewsContainer extends Component {
                 />
                 <Reviews
                     reviews={this.props.reviews}
-                    movieId={this.props.movieID}
-                    deleteReview={this.props.deleteReview}
+                    movieID={this.props.movieID}
                 />
                 
             </div>

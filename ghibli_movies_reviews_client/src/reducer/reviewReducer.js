@@ -1,31 +1,28 @@
 import {postReview, fetchReviews} from '../apiRequests/apiCalls'
 
 const initialState = {
-    reviews: [
-      { id: 0, content: 'YOOO', movieID: "3"},
-    ],
-
+    reviews: [],
+		errors:[]
   }
 
-export default async function manageReviews(state = initialState, action) {
-    console.log(state)
+export default function manageReviews(state = initialState, action) {
     switch (action.type) {
         case 'ADD_REVIEW':
-            const review = { content: action.review.text, movieID: action.review.movieID }
-            const response = await postReview(JSON.stringify({review: review}))
-            console.log('response', response)
-            // return { ...state, reviews: [ ...state.reviews, response]}
-            return { ...state, reviews: [...state.reviews, response]}
-
+					if(action.data.error){
+						return {...state, errors: [...state.errors, action.data.error]}
+					}
+          return { ...state, reviews: [ ...state.reviews, action.data]}
 
         case 'DELETE_REVIEW':
             const filteredReviews = state.reviews.filter(review => review.id !== action.id)
             return { ...state, filteredReviews}
 
         case 'GET_REVIEWS':
-            const reviews = await fetchReviews()
-            return {...state}
+            return { ...state, reviews: [...state.reviews, ...action.data] }
+				case 'GET_REVIEWS_FAILURE':
+
+					return { ...state }
         default: 
-        return state
+        	return state;
     }
 }

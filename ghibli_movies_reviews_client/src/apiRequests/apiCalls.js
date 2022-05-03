@@ -1,13 +1,16 @@
 const BACKEND_URL = "http://127.0.0.1:3001"
 
-export async function fetchReviews() {
-    const response = await fetch(`${BACKEND_URL}/reviews`)
-    const result = response.json()
-    return result
+export function fetchReviews(dispatch) {
+		return fetch(`${BACKEND_URL}/reviews`)
+		.then(res => res.json())
+		.then(
+			data => dispatch({ type: 'GET_REVIEWS', data }),
+      err => dispatch({ type: 'GET_REVIEWS_FAILURE', err })
+		)
 }
 
-export async function postReview(payload) {
-    const response = await fetch(`${BACKEND_URL}/reviews`, 
+export function postReview(dispatch, payload) {
+     return fetch(`${BACKEND_URL}/reviews`, 
         {
             method: "POST", 
             headers: {
@@ -16,10 +19,10 @@ export async function postReview(payload) {
             },
             body: payload
         }
-        
     )
-    const result = await response.json()
-
-    return result
+		.then(res => res.json())
+		.then(
+			data => dispatch({ type: 'ADD_REVIEW', data })
+		)
 }
 

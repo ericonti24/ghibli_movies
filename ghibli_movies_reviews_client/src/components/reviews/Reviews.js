@@ -1,28 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Review from './Review'
+import {fetchReviews} from '../../apiRequests/apiCalls'
 
 
 class Reviews extends Component {
-
-
-
-    // async componentDidMount(){
-    //   this.props.getReviews()
-    // }
-
+    componentDidMount(){
+      fetchReviews(this.props.dispatch)
+    }
 
     render() {
-  
       const { reviews, movieID, deleteReview } = this.props;
-
-      console.log(this.props.reviews)
-
 
       let relatedReviews
       let reviewList
       if(reviews && reviews.length > 0){
-
         relatedReviews = reviews.filter(review => review.movieID === movieID);
 
         reviewList = relatedReviews.map((review, index) => {

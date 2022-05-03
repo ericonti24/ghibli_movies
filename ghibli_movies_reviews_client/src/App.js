@@ -6,7 +6,7 @@ import {
 import NavBar from './components/NavBar'
 import MoviesPage from './components/movies/MoviesPage';
 import Movie from './components/movies/Movie';
-
+import './App.css'
 
 class App extends Component {
 
@@ -26,9 +26,7 @@ class App extends Component {
   render(){
     return (
         <Router>
-          <div>
             <NavBar/>
-            
             <Switch>
               <Route exact path={`/movies/:movieID`} render={routerProps => <Movie {...routerProps} movies={this.state.movies}/>} />
               <Route exact path="/" render={() => 
@@ -47,7 +45,6 @@ class App extends Component {
               />
               <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />
             </Switch>
-          </div>
         </Router>
     )
   }

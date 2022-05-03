@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import './Review.css'
 class Review extends Component {
-    handleOnClick = () => {
-        this.props.deleteReview(this.props.review.id)
-    }
+	handleOnClick = () => {
+			this.props.deleteReview(this.props.review.id)
+	}
 
-    render() {
-        return (
-            <div>
-                <li>
-                    {this.props.review.text}
-                </li>
-                <button onClick={this.handleOnClick}>Delete</button>
-            </div>
-        )
-    }
+	render() {
+			return (
+					<div>
+							<li>
+									{this.props.review.content}
+							</li>
+							<button onClick={this.handleOnClick}>Delete</button>
+					</div>
+			)
+	}
 }
 
-export default Review
+
+
+const mapDispatchToProps = dispatch => ({
+    deleteReview: id => dispatch({type: 'DELETE_REVIEW', id}) 
+})
+
+export default connect(null, mapDispatchToProps)(Review)

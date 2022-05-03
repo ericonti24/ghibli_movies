@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { postReview } from '../../apiRequests/apiCalls'
 class ReviewInput extends Component {
 
     constructor(props) {
@@ -16,15 +17,19 @@ class ReviewInput extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        console.log('WTF', this.props.movieID)
-        this.props.addReview({text: this.state.text, movieID: this.props.movieID})
+				const payload = JSON.stringify({
+					review:{
+						content: this.state.text,
+						movieID: this.props.movieID
+					}
+				})
+				postReview(this.props.dispatch, payload)
         this.setState({
             text: '',
         })
     }
 
     render() {
-
         return (
             <div>
                 <form onSubmit={this.handleOnSubmit}>
@@ -39,4 +44,5 @@ class ReviewInput extends Component {
     }
 }
 
-export default ReviewInput
+
+export default connect(null, null)(ReviewInput)

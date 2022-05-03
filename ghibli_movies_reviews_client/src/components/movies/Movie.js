@@ -9,7 +9,7 @@ const Movie = ({match, movies}) => {
                 <h1>{movies[match.params.movieID].title}</h1>
                 <img alt={""} src={movies[match.params.movieID].image} width="400"/>
                 <br></br>
-                <p style={{marginRight: 2030, color: "white", fontSize: 20}}>{movies[match.params.movieID].description}</p>
+                <p style={{marginRight: 2030, width: '50vw', color: "white", fontSize: 20}}>{movies[match.params.movieID].description}</p>
 
                 <label style={{fontSize: 20}}>Release Date: </label>
                 {movies[match.params.movieID].release_date}
