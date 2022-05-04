@@ -1,3 +1,5 @@
+// import Review from "../components/reviews/Review"
+
 const BACKEND_URL = "http://127.0.0.1:3001"
 
 export function fetchReviews(dispatch) {
@@ -22,7 +24,26 @@ export function postReview(dispatch, payload) {
     )
 		.then(res => res.json())
 		.then(
-			data => dispatch({ type: 'ADD_REVIEW', data })
+			data => dispatch({ type: 'ADD_REVIEW', data  })
 		)
 }
+
+export function deleteReview(id) {
+    return (dispatch) => {
+        fetch(`${BACKEND_URL}/reviews/${id}`, {
+            method: "DELETE"
+        })
+        // .then(res => res.json())
+        .then(id => dispatch({type: 'DELETE_REVIEW', payload: id}))
+    }
+    
+}
+
+
+// export const deleteReview = id => (
+//     fetch(`${BACKEND_URL}/reviews/${id}`, 
+//     {
+//         type: 'DELETE_REVIEW'
+//     })
+// )
 
