@@ -27,6 +27,7 @@ class ReviewInput extends Component {
         this.setState({
             text: '',
         })
+        window.location.reload(false)
     }
 
     render() {

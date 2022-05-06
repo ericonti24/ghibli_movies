@@ -1,5 +1,3 @@
-// import Review from "../components/reviews/Review"
-
 const BACKEND_URL = "http://127.0.0.1:3001"
 
 export function fetchReviews(dispatch) {
@@ -33,17 +31,7 @@ export function deleteReview(id) {
         fetch(`${BACKEND_URL}/reviews/${id}`, {
             method: "DELETE"
         })
-        // .then(res => res.json())
         .then(id => dispatch({type: 'DELETE_REVIEW', payload: id}))
     }
     
 }
-
-
-// export const deleteReview = id => (
-//     fetch(`${BACKEND_URL}/reviews/${id}`, 
-//     {
-//         type: 'DELETE_REVIEW'
-//     })
-// )
-

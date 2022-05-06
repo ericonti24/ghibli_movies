@@ -6,7 +6,9 @@ import {fetchReviews} from '../../apiRequests/apiCalls'
 
 class Reviews extends Component {
     componentDidMount(){
-      fetchReviews(this.props.dispatch)
+      if (!this.props.reviews.length){
+        fetchReviews(this.props.dispatch)
+      }
     }
 
     render() {
@@ -38,10 +40,5 @@ const mapStateToProps = (state) => {
     reviews: state.reviews
   };
 };
-// this.props.reviews
-
-// const mapDispatchToProps = dispatch => ({
-//   getReviews: () => dispatch({type: 'GET_REVIEWS'})
-// })
 
 export default connect(mapStateToProps)(Reviews)
