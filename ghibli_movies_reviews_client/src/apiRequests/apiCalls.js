@@ -28,10 +28,11 @@ export function postReview(dispatch, payload) {
 
 export function deleteReview(id) {
     return (dispatch) => {
-        fetch(`${BACKEND_URL}/reviews/${id}`, {
-            method: "DELETE"
+        fetch(`${BACKEND_URL}/reviews/` + id, 
+        {
+            method: "DELETE",
+            
         })
-        .then(id => dispatch({type: 'DELETE_REVIEW', payload: id}))
+        .then(() => dispatch({type: 'DELETE_REVIEW', id}))
     }
-    
 }

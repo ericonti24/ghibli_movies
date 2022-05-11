@@ -14,8 +14,6 @@ class Reviews extends Component {
     render() {
       const { reviews, movieID, deleteReview } = this.props;
 
-      // HELLOOO
-
       let relatedReviews
       let reviewList
       if(reviews && reviews.length > 0){

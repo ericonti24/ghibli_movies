@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
   Route, Switch
 } from 'react-router-dom';
-import NavBar from './components/NavBar'
-import MoviesPage from './components/movies/MoviesPage';
-import Movie from './components/movies/Movie';
+import MoviesList from './components/movies/MoviesList/MoviesList';
+import Movie from './components/movies/Movie/Movie';
+import Banner from './components/Banner/Banner'
 import './App.css'
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
   render(){
     return (
         <Router>
-            <NavBar/>
+						<Banner/>
             <Switch>
               <Route exact path={`/movies/:movieID`} render={routerProps => <Movie {...routerProps} movies={this.state.movies}/>} />
               <Route exact path="/" render={() => 
@@ -44,7 +44,7 @@ class App extends Component {
                 </div>}
                  
               />
-              <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />
+              <Route path='/movies' render={routerProps => <MoviesList {...routerProps} movies={this.state.movies}/>} />
             </Switch>
         </Router>
     )

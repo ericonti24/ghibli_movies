@@ -12,8 +12,9 @@ export default function manageReviews(state = initialState, action) {
           return { ...state, reviews: [ ...state.reviews, action.data]}
 
         case 'DELETE_REVIEW':
+          // debugger
             const filteredReviews = state.reviews.filter(review => review.id !== action.id)
-            return { ...state, filteredReviews}
+            return { ...state, reviews: filteredReviews}
 
         case 'GET_REVIEWS':
             return { ...state, reviews: [...state.reviews, ...action.data] }
