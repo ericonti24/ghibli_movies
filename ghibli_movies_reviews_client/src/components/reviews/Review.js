@@ -7,8 +7,9 @@ import './Review.css'
 class Review extends Component {
 
 	handleOnClick = event => {
+		event.preventDefault()
 		this.props.deleteReview(this.props.review.id)
-		window.location.reload(false)
+		// window.location.reload(false)
 	}
 
 	render() {
