@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import ReviewInput from '../components/reviews/ReviewInput'
 import Reviews from '../components/reviews/Reviews'
 import { connect } from 'react-redux'
+import './Reviews.css'
 
 class ReviewsContainer extends Component {
 
 	render() {
-			console.log('REVIEWS CONTAINER', this.props.movieID)
         return (
-            <div>
+            <div className='reviews-container'>
                 <ReviewInput 
                     addReview={this.props.addReview}
                     movieID={this.props.movieID}
